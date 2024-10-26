@@ -62,20 +62,18 @@ class UserController extends BaseController
             ];
             
             session()->set($sessionData);
-            return redirect()->to('/dashboard');
+
             
-            /*
-            if ($user['user_role'] === 'Head Admin') {
-                return redirect()->to('/roleDashboard/head_admin'); 
-            } else if ($user['user_role'] === 'Worker') {
-                return redirect()->to('/roleDashboard/worker'); 
-            } else if ($user['user_role'] === 'User') {
-                return redirect()->to('/roleDashboard/user');
-            } else {
-                 return redirect()->to('/dashboard');
+            switch ($user['user_role']) {
+                case 'head_admin':
+                    return redirect()->to('/head_admin');
+                case 'worker':
+                    return redirect()->to('/workers');
+                case 'user':
+                    return redirect()->to('/user');
+                default:
+                    return redirect()->to('/dashboard');
             }
-            */
-    
         } else {
             $data['validation'] = 'Invalid email or password.';
             return view('sign', $data); 
@@ -95,7 +93,7 @@ class UserController extends BaseController
         return redirect()->to('/signin'); // Redirect to sign in page
     }
 
-    public function dashboard()
+    /*public function dashboard()
     {
         // Check if the user is logged in
         if (!session()->get('isLoggedIn')) {
@@ -104,9 +102,32 @@ class UserController extends BaseController
     
         // Load the dashboard view
         return view('dashboard');
-    }
-    
+    }*/
 
-    
+    //user_role's to their respective dashboards. here
+    public function headAdminDashboard()
+    {
+        if (session()->get('user_role') !== 'head_admin') {
+            return redirect()->to('/signin');
+        }
+        return view('roleDashboard/head_admin');
+    }
+
+    public function workerDashboard()
+    {
+        if (session()->get('user_role') !== 'worker') {
+            return redirect()->to('/signin');
+        }
+        return view('roleDashboard/workers');
+    }
+
+    public function userDashboard()
+    {
+        if (session()->get('user_role') !== 'user') {
+            return redirect()->to('/signin');
+        }
+        return view('roleDashboard/user');
+    }
+    // hanggang here :>
 
 }

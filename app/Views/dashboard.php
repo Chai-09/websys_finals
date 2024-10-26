@@ -13,7 +13,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-5">
             <div class="card shadow-lg p-4">
-                <h2 class="text-center mb-4">User Dashboard</h2>
+                <h2 class="text-center mb-4">Meh Dashboard</h2>
 
                 <?php if (session()->get('isLoggedIn')): ?>
                     <h4>Welcome, <?= esc(session()->get('name')) ?>!</h4>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
+    <title>Head Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
@@ -18,7 +18,7 @@
                 <?php if (session()->get('isLoggedIn')): ?>
                     <h4>Welcome, <?= esc(session()->get('name')) ?>!</h4>
                     <p><strong>Email:</strong> <?= esc(session()->get('email')) ?></p>
-                    <p><strong>User Role:</strong> <?= esc(session()->get('user_role')) ?></p>
+                    <p><strong>User Role: Head Admin :></strong></p>
                 <?php else: ?>
                     <div class="alert alert-warning">
                         You are not logged in. Please log in first.

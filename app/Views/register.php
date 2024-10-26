@@ -43,10 +43,9 @@
                     </div>
                     
                     <div class="mb-3">
-                        <label class="form-label">User Role</label>
+                        <label class="form-label">User Role: User</label>
                         <select name="user_role" class="form-select">
-                            <option value="head_admin">Head Admin</option>
-                            <option value="worker">Worker</option>
+                            
                             <option value="user">User</option>
                         </select>
                     </div>
