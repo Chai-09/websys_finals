@@ -17,7 +17,6 @@ $routes->match(['get', 'post'], '/login', 'UserController::login');
 //$routes->match(['get', 'post'], '/dashboard', 'UserController::dashboard');
 //$routes->match(['get', 'post'], '/dashboard', 'UserController::dashboard'); <-chuchu
 
-
 // Logout routes - paul
 $routes->match(['post'], '/logout', 'UserController::logout');
 
@@ -32,7 +31,6 @@ $routes->post('/head_admin/delete/(:num)', 'HeadAdminController::delete/$1');
 //head admin edit and delete page routes - geb
 $routes->get('head_admin/edit/(:num)', 'HeadAdminController::edit/$1');
 $routes->post('head_admin/update/(:num)', 'HeadAdminController::update/$1');
-
 
 // New route for calendar - ryk 
 $routes->get('roleDashboard/calendar', 'UserController::calendar');
