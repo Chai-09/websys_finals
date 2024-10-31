@@ -2,13 +2,14 @@
 
 namespace App\Controllers;
 use App\Models\UserModel;
+use App\Models\WorkerModel;
 
 class UserController extends BaseController
 {
     public function store() // Save Data in Register.php
     {
         helper(['form']);
-        
+         
         $rules = [
             'name'            => 'required|min_length[5]|max_length[50]',
             'email'           => 'required|min_length[12]|max_length[100]|valid_email|is_unique[users.email]',
@@ -123,11 +124,36 @@ class UserController extends BaseController
 
     public function userDashboard()
     {
-        if (session()->get('user_role') !== 'user') {
-            return redirect()->to('/signin');
+        if (!session()->get('isLoggedIn')) {
+            return redirect()->to('/signin'); // Redirect if not logged in
         }
-        return view('roleDashboard/user');
+
+        // Use the WorkerModel to fetch workers
+        $workerModel = new WorkerModel();
+        $data['workers'] = $workerModel->getWorkers(); // Get workers from the database
+
+        return view('roleDashboard/user', $data); // Pass workers data to the view
     }
+
     // hanggang here :>
+
+    public function calendar()
+    {
+        if (!session()->get('isLoggedIn')) {
+            return redirect()->to('/signin'); // Ensure user is logged in
+        }
+        return view('roleDashboard/calendar');
+    }
+
+    public function receipts()
+    {
+        $data = [
+            'selectedDate' => $this->request->getPost('selectedDate'),
+            'selectedTime' => $this->request->getPost('selectedTime'),
+            'workerName' => $this->request->getVar('workerName'), // Capture the worker name
+        ];
+        return view('roleDashboard/receipts', $data);
+    }
+
 
 }
