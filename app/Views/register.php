@@ -53,6 +53,11 @@
                     <button type="submit" class="btn btn-primary w-100 mt-3">Register</button>
                 </form>
 
+                <!-- Link to SignIn -->
+                <div class="text-center mt-3">
+                    <p>Already Have an Account? <a href="<?= base_url('signin') ?>" class="btn btn-link">Click here</a></p>
+                </div>
+
             </div>
         </div>
     </div>
