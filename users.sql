@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2024 at 04:35 PM
+-- Generation Time: Oct 31, 2024 at 05:44 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,7 +44,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `user_role`, `status`, `created_at`, `updated_at`) VALUES
 (6, 'Paul Aeron Guillermo', 'paulaeronguillermo@gmail.com', '$2y$10$EBUTGzt9uv5BWzxpFFaB2e6PVCtdZE7okxTkm3R7NfiTzxzpLxfQK', 'head_admin', 'Active', '2024-10-25 21:20:36', '2024-10-25 21:20:36'),
-(7, 'Amiel Bicaldo', 'amielburat@gmail.com', '$2y$10$4c/UFgNmHKWLP7odWHtjP.fu6mp.3Evk4N2G/5PWze3vJvKcZQxHe', 'worker', 'Active', '2024-10-25 21:30:55', '2024-10-25 21:30:55');
+(7, 'Amiel Bicaldo', 'amiel@gmail.com', '$2y$10$4c/UFgNmHKWLP7odWHtjP.fu6mp.3Evk4N2G/5PWze3vJvKcZQxHe', 'worker', 'Active', '2024-10-25 21:30:55', '2024-10-25 21:30:55'),
+(8, 'ernesto', 'gabe@gmail.com', '$2y$10$PNcbajAc/.QhPRS0K46qz.0iZ6TJqfjz6qGaxp8t3gW8b6sJFaxHq', 'user', 'Active', '2024-10-25 23:29:01', '2024-10-25 23:29:01'),
+(9, 'Jay \"Sarap\" San Pascual Jr.', 'jaylakitite@gmail.com', '$2y$10$DMIhWdeUFnJvW.bjgq2JeuOel3Cb1yqgHqCayRD3XOpK.2dl9ECL6', 'worker', 'Active', '2024-10-26 21:52:39', '2024-10-26 21:52:39');
 
 --
 -- Indexes for dumped tables
@@ -64,7 +66,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
