@@ -6,6 +6,10 @@
     <title>Sign In</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body { background-color: #1C1C1C; font-family: 'Courier New'; }
+        .card { background-color: #2a2a2a; color: #FFFFFF; top: 50%; margin: -50px 0 0 -50px; border-radius: 35px; }
+    </style>
 </head>
 <body>
 
@@ -37,7 +41,7 @@
 
                 <!-- Link to Registration -->
                 <div class="text-center mt-3">
-                    <p>You don't have an account? <a href="<?= base_url('register') ?>" class="btn btn-link">Click here</a></p>
+                    <p>Don't have an account? <a href="<?= base_url('register') ?>" class="btn btn-link">Click Here</a></p>
                 </div>
             </div>
         </div>

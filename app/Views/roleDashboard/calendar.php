@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
+        body { background-color: #1C1C1C; font-family: 'Courier New'; }
+        .card { background-color: #2a2a2a; color: #FFFFFF; top: 20%; margin: -50px 0 0 -50px; border-radius: 35px; }
         .calendar td.clickable { cursor: pointer; transition: background-color 0.2s ease; }
         .calendar td.clickable:hover { background-color: #f0f8ff; }
         .calendar td.selected { background-color: #28a745 !important; color: #ffffff; }
@@ -33,7 +35,7 @@
                 
                 <!-- Back button to user.php - ryk -->
                 <div class="text-center mb-3">
-                    <button onclick="window.location.href='<?= base_url('user') ?>'" class="btn btn-secondary btn-sm">Back</button>
+                    <button onclick="window.location.href='<?= base_url('user') ?>'" class="btn btn-secondary btn-sm">Go Back</button>
                 </div>
 
                 <!-- Shows chosen worker name - ryk -->
@@ -42,25 +44,25 @@
                 <!-- Shows time - ryk -->
                 <div class="row">
                     <div class="col-md-6">
-                        <h4>Select Time</h4>
+                        <br> <h4>Select Time:</h4> <br>
                         <div id="time-options">
-                            <button class="time-button" data-time="09:00 AM">09:00 AM</button>
-                            <button class="time-button" data-time="10:00 AM">10:00 AM</button>
-                            <button class="time-button" data-time="11:00 AM">11:00 AM</button>
-                            <button class="time-button" data-time="12:00 PM">12:00 PM</button>
-                            <button class="time-button" data-time="01:00 PM">01:00 PM</button>
-                            <button class="time-button" data-time="02:00 PM">02:00 PM</button>
+                            <button class="time-button" style="padding: 8px" data-time="09:00 AM">09:00 AM</button> 
+                            <button class="time-button" style="padding: 8px" data-time="10:00 AM">10:00 AM</button> 
+                            <button class="time-button" style="padding: 8px" data-time="11:00 AM">11:00 AM</button> <br> <br>
+                            <button class="time-button" style="padding: 8px" data-time="12:00 PM">12:00 PM</button> 
+                            <button class="time-button" style="padding: 8px" data-time="01:00 PM">01:00 PM</button>
+                            <button class="time-button" style="padding: 8px" data-time="02:00 PM">02:00 PM</button> <br> <br> <br>
                         </div>
                     </div>
 
                     <div class="col-md-6 calendar">
-                        <h3 class="text-center" id="calendar-title"></h3>
+                        <br> <h3 class="text-center" id="calendar-title"></h3>
                         <div class="d-flex justify-content-between mb-3">
                             <button class="btn btn-outline-primary btn-sm" id="prev-month">Previous</button>
                             <button class="btn btn-outline-primary btn-sm" id="next-month">Next</button>
                         </div>
                         <!-- Shows the calendar - ryk -->
-                        <table class="table table-bordered text-center">
+                        <table class="table table-bordered-none text-center">
                             <thead>
                                 <tr>
                                     <th>Sun</th>
@@ -153,7 +155,7 @@
        
         if  (!selectedDate || !selectedTime){
               e.preventDefault()
-            alert('Please select date and time!!!');
+            alert('Please select a proper date and time to proceed!');
         }
 
         
