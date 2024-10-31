@@ -6,6 +6,10 @@
     <title>Register</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <style>
+        body { background-color: #1C1C1C; font-family: 'Courier New'; }
+        .card { background-color: #2a2a2a; color: #FFFFFF; top: 20%; margin: -50px 0 0 -50px; border-radius: 35px; }
+    </style>
 </head>
 <body>
 
@@ -55,7 +59,7 @@
 
                 <!-- Link to SignIn -->
                 <div class="text-center mt-3">
-                    <p>Already Have an Account? <a href="<?= base_url('signin') ?>" class="btn btn-link">Click here</a></p>
+                    <p>Already have an account? <a href="<?= base_url('signin') ?>" class="btn btn-link">Click Here</a></p>
                 </div>
 
             </div>

@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
+        body { background-color: #1C1C1C; font-family: 'Courier New'; }
+        .card { background-color: #2a2a2a; color: #FFFFFF; top: 50%; margin: -50px 0 0 -50px; border-radius: 35px; }
         .worker-list .worker { cursor: pointer; transition: background-color 0.2s ease; margin-bottom: 10px; }
         .worker-list .worker:hover, .worker-list .worker.selected { background-color: #007bff; color: #ffffff; }
     </style>
@@ -23,23 +25,16 @@
                 <!--Error Handling -ryk-->
                 <?php if (session()->get('isLoggedIn')): ?>
                     <h4>Welcome, <?= esc(session()->get('name')) ?>!</h4>
-                    <p><strong>Email:</strong> <?= esc(session()->get('email')) ?></p>
-                    <p><strong>User Role:</strong> <?= esc(session()->get('user_role')) ?></p>
+                    <p> User Information: || <strong>Email:</strong> <?= esc(session()->get('email')) ?> || <strong>User Role:</strong> <?= esc(session()->get('user_role')) ?> || </p>
                 <?php else: ?>
                     <div class="alert alert-warning">You are not logged in. Please log in first.</div>
                 <?php endif; ?>
 
-                <?php if (session()->get('isLoggedIn')): ?>
-                    <form action="<?= base_url('logout') ?>" method="post">
-                        <button type="submit" class="btn btn-danger w-100 mt-3">Logout</button>
-                    </form>
-                <?php endif; ?>
-                
-                <!-- Worker List - ryk -->
-                <div class="worker-list mb-3">
-                    <h4>Select a Worker</h4>
+                  <!-- Worker List - ryk -->
+                  <div class="worker-list mb-3">
+                    <h4>Select a Worker:</h4>
                     <form action="<?= base_url('roleDashboard/calendar') ?>" method="GET">
-                        <select name="workerName" id="worker" class="form-select mb-3">
+                        <select name="workerName" id="worker" class="form-select mb-3" style="text-align: center">
                             <option value="">-- Select Worker --</option>
                             <?php if (!empty($workers)): ?>
                                 <?php foreach ($workers as $worker): ?>
@@ -52,6 +47,13 @@
                         <button type="submit" class="btn btn-primary w-100">Go to Calendar</button>
                     </form>
                 </div>
+
+                <?php if (session()->get('isLoggedIn')): ?>
+                    <form action="<?= base_url('logout') ?>" method="post">
+                        <button type="submit" class="btn btn-danger w-25 mt-3">Logout</button>
+                    </form>
+                <?php endif; ?>
+                
             </div>
         </div>
     </div>

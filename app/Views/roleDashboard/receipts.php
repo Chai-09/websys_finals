@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Receipt</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #1C1C1C; font-family: 'Courier New'; }
+        .card { background-color: #2a2a2a; color: #FFFFFF; top: 60%; margin: -50px 0 0 -50px; border-radius: 35px; }
+    </style>
 </head>
 <body>
 
@@ -25,6 +29,11 @@ $myDate = date('Y-m-d h:i:s')
                 <p><strong>Date Selected:</strong> <?= htmlspecialchars($selectedDate) ?></p>
                 <p><strong>Time Selected:</strong> <?= htmlspecialchars($selectedTime) ?></p>
                 <p><strong>Time of Booking:</strong> <?= htmlspecialchars($myDate) ?></p>
+                
+                <br>
+                <div class="text-center mb-3"> <!-- Back button to dashboard -->
+                    <button onclick="window.location.href='<?= base_url('user') ?>'" class="btn btn-secondary btn-sm">Back to Dashboard</button>
+                </div>
             </div>
         </div>
     </div>
