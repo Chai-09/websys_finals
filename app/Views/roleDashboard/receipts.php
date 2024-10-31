@@ -11,8 +11,6 @@
 <?php
 // Addded lang time date shet
 $myDate = date('Y-m-d h:i:s')
-
-
 ?> 
 
 <div class="container mt-5">
