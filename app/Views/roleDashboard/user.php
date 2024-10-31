@@ -12,12 +12,15 @@
     </style>
 </head>
 <body>
+
+<!--Shows user dashboard - ryk -->
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow-lg p-4">
                 <h2 class="text-center mb-4">User Dashboard</h2>
 
+                <!--Error Handling -ryk-->
                 <?php if (session()->get('isLoggedIn')): ?>
                     <h4>Welcome, <?= esc(session()->get('name')) ?>!</h4>
                     <p><strong>Email:</strong> <?= esc(session()->get('email')) ?></p>
@@ -32,7 +35,7 @@
                     </form>
                 <?php endif; ?>
                 
-                <!-- Worker List -->
+                <!-- Worker List - ryk -->
                 <div class="worker-list mb-3">
                     <h4>Select a Worker</h4>
                     <form action="<?= base_url('roleDashboard/calendar') ?>" method="GET">
@@ -73,6 +76,7 @@
         });
     });
 
+    //gets worker's name - ryk
     continueBtn.addEventListener('click', () => {
         const workerName = selectedWorker.innerText;
         window.location.href = "<?= base_url('roleDashboard/calendar') ?>?workerName=" + encodeURIComponent(workerName);

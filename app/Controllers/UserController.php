@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\UserModel;
-use App\Models\WorkerModel;
+use App\Models\WorkerModel; // added for worker - ryk
 
 class UserController extends BaseController
 {
@@ -106,7 +106,7 @@ class UserController extends BaseController
     }*/
 
     //user_role's to their respective dashboards. here
-    public function headAdminDashboard()
+    public function headAdminDashboard() //if user_role is head_admin, then ito yung ipapakita - ryk
     {
         if (session()->get('user_role') !== 'head_admin') {
             return redirect()->to('/signin');
@@ -114,7 +114,7 @@ class UserController extends BaseController
         return view('roleDashboard/head_admin');
     }
 
-    public function workerDashboard()
+    public function workerDashboard() //if user_role is worker, then ito yung ipapakita - ryk
     {
         if (session()->get('user_role') !== 'worker') {
             return redirect()->to('/signin');
@@ -122,7 +122,7 @@ class UserController extends BaseController
         return view('roleDashboard/workers');
     }
 
-    public function userDashboard()
+    public function userDashboard() //if user_role is user, then ito yung ipapakita - ryk
     {
         if (!session()->get('isLoggedIn')) {
             return redirect()->to('/signin'); // Redirect if not logged in
@@ -137,7 +137,7 @@ class UserController extends BaseController
 
     // hanggang here :>
 
-    public function calendar()
+    public function calendar() // shows the calendar and time - ryk
     {
         if (!session()->get('isLoggedIn')) {
             return redirect()->to('/signin'); // Ensure user is logged in
@@ -145,7 +145,7 @@ class UserController extends BaseController
         return view('roleDashboard/calendar');
     }
 
-    public function receipts()
+    public function receipts() // shows the receipt from user and calendar file - ryk
     {
         $data = [
             'selectedDate' => $this->request->getPost('selectedDate'),

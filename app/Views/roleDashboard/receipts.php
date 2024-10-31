@@ -13,6 +13,7 @@
 $myDate = date('Y-m-d h:i:s')
 ?> 
 
+<!-- Shows user's name and email, chosen worker, date and time selected, and time of booking - ryk -->
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">

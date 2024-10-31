@@ -31,12 +31,15 @@
             <div class="card shadow-lg p-4">
                 <h2 class="text-center mb-4">Select Date and Time</h2>
                 
+                <!-- Back button to user.php - ryk -->
                 <div class="text-center mb-3">
                     <button onclick="window.location.href='<?= base_url('user') ?>'" class="btn btn-secondary btn-sm">Back</button>
                 </div>
 
+                <!-- Shows chosen worker name - ryk -->
                 <h4>Selected Worker: <?= htmlspecialchars($_GET['workerName'] ?? 'Not selected') ?></h4>
 
+                <!-- Shows time - ryk -->
                 <div class="row">
                     <div class="col-md-6">
                         <h4>Select Time</h4>
@@ -56,6 +59,7 @@
                             <button class="btn btn-outline-primary btn-sm" id="prev-month">Previous</button>
                             <button class="btn btn-outline-primary btn-sm" id="next-month">Next</button>
                         </div>
+                        <!-- Shows the calendar - ryk -->
                         <table class="table table-bordered text-center">
                             <thead>
                                 <tr>
@@ -129,6 +133,7 @@
         }
     }
 
+    //Gets selected or clicked time - ryk
     const timeButtons = document.querySelectorAll('.time-button');
     timeButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -154,12 +159,14 @@
         
     });
 
+    //goes to previous month - ryk
     document.getElementById('prev-month').addEventListener('click', () => {
         currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
         currentYear = (currentMonth === 11) ? currentYear - 1 : currentYear;
         renderCalendar(currentMonth, currentYear);
     });
 
+    //goes to next month - ryk
     document.getElementById('next-month').addEventListener('click', () => {
         currentMonth = (currentMonth === 11) ? 0 : currentMonth + 1;
         currentYear = (currentMonth === 0) ? currentYear + 1 : currentYear;
