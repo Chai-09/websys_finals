@@ -8,6 +8,13 @@
 </head>
 <body>
 
+<?php
+// Addded lang time date shet
+$myDate = date('Y-m-d h:i:s')
+
+
+?> 
+
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -18,6 +25,7 @@
                 <p><strong>Worker Chosen:</strong> <?= htmlspecialchars($workerName) ?></p>
                 <p><strong>Date Selected:</strong> <?= htmlspecialchars($selectedDate) ?></p>
                 <p><strong>Time Selected:</strong> <?= htmlspecialchars($selectedTime) ?></p>
+                <p><strong>Time of Booking:</strong> <?= htmlspecialchars($myDate) ?></p>
             </div>
         </div>
     </div>

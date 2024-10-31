@@ -118,7 +118,7 @@
                         }
                         cell.classList.add('selected');
                         selectedCell = cell;
-                        document.getElementById('selectedDate').value = `${year}-${month + 1}-${date}`;
+                        document.getElementById('selectedDate').value = `${year}-${month + 1}-${cell.innerHTML}`; //pota eto lang naman problem
                     });
 
                     date++;
@@ -139,6 +139,19 @@
             selectedTimeButton = button;
             document.getElementById('selectedTime').value = button.getAttribute('data-time');
         });
+    });
+
+    //Added form handling for date and time submission - geb
+    document.getElementById('appointmentForm').addEventListener ('submit', (e) => {
+        const selectedDate = document.getElementById('selectedDate').value;
+        const selectedTime = document.getElementById('selectedTime').value;
+       
+        if  (!selectedDate || !selectedTime){
+              e.preventDefault()
+            alert('Please select date and time!!!');
+        }
+
+        
     });
 
     document.getElementById('prev-month').addEventListener('click', () => {
