@@ -38,4 +38,4 @@ $routes->get('roleDashboard/calendar', 'UserController::calendar');
 // route for receipts - ryk
 $routes->match(['get', 'post'], 'roleDashboard/receipts', 'UserController::receipts');
 
-
+// eto ba macky kita mo
