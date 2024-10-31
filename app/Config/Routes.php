@@ -25,3 +25,10 @@ $routes->match(['post'], '/logout', 'UserController::logout');
 $routes->match(['get', 'post'], '/head_admin', 'UserController::headAdminDashboard');
 $routes->match(['get', 'post'], '/workers', 'UserController::workerDashboard');
 $routes->match(['get', 'post'], '/user', 'UserController::userDashboard');
+
+// New route for calendar
+$routes->get('roleDashboard/calendar', 'UserController::calendar');
+
+$routes->match(['get', 'post'], 'roleDashboard/receipts', 'UserController::receipts');
+
+
