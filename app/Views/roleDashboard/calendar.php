@@ -9,32 +9,16 @@
     <style>
         body { background-color: #1C1C1C; font-family: 'Roboto'; }
         .card { background-color: #2a2a2a; color: #FFFFFF; top: 20%; margin: -50px 0 0 -50px; border-radius: 35px; }
-        .calendar td { background-color:#2A2A2A;}
+        .calendar td { background-color:#FFFFFF;}
         .calendar td.clickable { cursor: pointer;
              transition: background-color 0.2s ease;
-            background-color: #FAF9F6;
+            background-color: #FFFFFF;
             }
-        .calendar td.clickable:hover { background-color: #f2e8d9; }
-        .calendar td.selected { background-color: #4C6444; !important; color: #ffffff; }
-
-        .time-button {
-            background-color: white;
-            border: 1px solid #ccc;
-            color: black;
-            margin: 5px;
-            border-radius: 25px;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-
-        .time-button:hover{
-            background-color: #f2e8d9;
-        }
-
-        .time-button.selected {
-            background-color: #4C6444;
-            color: white;
-        }
-
+        .calendar td.clickable:hover { background-color: #78866B; }
+        .calendar td.selected { background-color: #4C6444; !important; color: #FFFFFF; }
+        .time-button { background-color: white; border: 1px solid #ccc; color: black; margin: 5px; border-radius: 25px; transition: background-color 0.2s ease, color 0.2s ease;}
+        .time-button:hover{ background-color: #78866B;}
+        .time-button.selected {background-color: #4C6444; color: white; border: none;}
  /*dito yung iba kulay ng days para unique salonga lang tignan pre */
  .calendar th:first-child,
     .calendar th:nth-child(2),
@@ -43,7 +27,7 @@
     .calendar th:nth-child(5),
     .calendar th:nth-child(6),
     .calendar th:nth-child(7) {
-        background-color: #4C6444; 
+        background-color: #FFFFFF; 
     }
 
         /*.gobackbtn {

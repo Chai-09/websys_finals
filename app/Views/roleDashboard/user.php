@@ -11,9 +11,23 @@
         .card { background-color: #2a2a2a; color: #FFFFFF; top: 50%; margin: -50px 0 0 -50px; border-radius: 35px; }
         .worker-list .worker { cursor: pointer; transition: background-color 0.2s ease; margin-bottom: 10px; }
         .worker-list .worker:hover, .worker-list .worker.selected { background-color: #007bff; color: #ffffff; }
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
     </style>
 </head>
 <body>
+
+<video autoplay muted loop id="myVideo">
+  <source src="userbg.mp4" type="video/mp4">
+</video>
 
 <!--Shows user dashboard - ryk -->
 <div class="container mt-5">
