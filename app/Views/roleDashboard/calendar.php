@@ -7,22 +7,53 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
-        body { background-color: #1C1C1C; font-family: 'Courier New'; }
+        body { background-color: #1C1C1C; font-family: 'Roboto'; }
         .card { background-color: #2a2a2a; color: #FFFFFF; top: 20%; margin: -50px 0 0 -50px; border-radius: 35px; }
-        .calendar td.clickable { cursor: pointer; transition: background-color 0.2s ease; }
-        .calendar td.clickable:hover { background-color: #f0f8ff; }
-        .calendar td.selected { background-color: #28a745 !important; color: #ffffff; }
+        .calendar td { background-color:#2A2A2A;}
+        .calendar td.clickable { cursor: pointer;
+             transition: background-color 0.2s ease;
+            background-color: #FAF9F6;
+            }
+        .calendar td.clickable:hover { background-color: #f2e8d9; }
+        .calendar td.selected { background-color: #4C6444; !important; color: #ffffff; }
 
         .time-button {
             background-color: white;
             border: 1px solid #ccc;
             color: black;
             margin: 5px;
+            border-radius: 25px;
+            transition: background-color 0.2s ease, color 0.2s ease;
         }
+
+        .time-button:hover{
+            background-color: #f2e8d9;
+        }
+
         .time-button.selected {
-            background-color: black;
+            background-color: #4C6444;
             color: white;
         }
+
+ /*dito yung iba kulay ng days para unique salonga lang tignan pre */
+ .calendar th:first-child,
+    .calendar th:nth-child(2),
+    .calendar th:nth-child(3),
+    .calendar th:nth-child(4),
+    .calendar th:nth-child(5),
+    .calendar th:nth-child(6),
+    .calendar th:nth-child(7) {
+        background-color: #4C6444; 
+    }
+
+        /*.gobackbtn {
+            background-color: #89CFF0;
+            border-radius: 5px;
+        }
+
+        .subbtn{
+            background-color: #008000;
+        }*/
     </style>
 </head>
 <body>
