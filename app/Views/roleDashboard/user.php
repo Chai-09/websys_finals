@@ -25,7 +25,7 @@
 </head>
 <body>
 
-<video autoplay muted loop id="myVideo">
+<video autoplay muted loop id="myVideo" class="video-bg"> <!-- Nilagyan ko lang ng class pre HAHAH -->
   <source src="userbg.mp4" type="video/mp4">
 </video>
 
