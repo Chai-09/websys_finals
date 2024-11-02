@@ -134,6 +134,7 @@ class UserController extends BaseController
         if (!session()->get('isLoggedIn')) {
             return redirect()->to('/'); // Ensure user is logged in
         }
+
         return view('roleDashboard/calendar');
     }
 

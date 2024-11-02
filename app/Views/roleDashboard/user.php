@@ -29,31 +29,31 @@
   <source src="userbg.mp4" type="video/mp4">
 </video>
 
-<!--Shows user dashboard - ryk -->
+<!--Shows user dashboard -->
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow-lg p-4">
                 <h2 class="text-center mb-4">User Dashboard</h2>
 
-                <!--Error Handling -ryk-->
+                <!--Error Handling -->
                 <?php if (session()->get('isLoggedIn')): ?>
                     <h4>Welcome, <?= esc(session()->get('name')) ?>!</h4>
                     <p> User Information: || <strong>Email:</strong> <?= esc(session()->get('email')) ?> || <strong>User Role:</strong> <?= esc(session()->get('user_role')) ?> || </p>
                 
 
-                  <!-- Worker List - ryk -->
+                  <!-- Worker List -->
                   <div class="worker-list mb-3">
                     <h4>Select a Worker:</h4>
                     <form action="<?= base_url('roleDashboard/calendar') ?>" method="GET">
-                        <select name="workerName" id="worker" class="form-select mb-3" style="text-align: center">
+                        <select name="workerName" id="worker" class="form-select mb-3" style="text-align: center" required>
                             <option value="">-- Select Worker --</option>
                             <?php if (!empty($workers)): ?>
                                 <?php foreach ($workers as $worker): ?>
                                     <option value="<?= esc($worker['name']) ?>"><?= esc($worker['name']) ?></option>
                                 <?php endforeach; ?>
                             <?php else: ?>
-                                <option value="">No workers available</option>
+                                <option>No workers available</option>
                             <?php endif; ?>
                         </select>
                         <button type="submit" class="btn btn-primary w-100">Go to Calendar</button>

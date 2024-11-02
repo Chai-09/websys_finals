@@ -10,34 +10,20 @@
         body { background-color: #1C1C1C; font-family: 'Roboto'; }
         .card { background-color: #2a2a2a; color: #FFFFFF; top: 20%; margin: -50px 0 0 -50px; border-radius: 35px; }
         .calendar td { background-color:#FFFFFF;}
-        .calendar td.clickable { cursor: pointer;
-             transition: background-color 0.2s ease;
-            background-color: #FFFFFF;
-            }
+        .calendar td.clickable { cursor: pointer; transition: background-color 0.2s ease; background-color: #FFFFFF; }
         .calendar td.clickable:hover { background-color: #78866B; }
-        .calendar td.selected { background-color: #4C6444; !important; color: #FFFFFF; }
-        .time-button { background-color: white; border: 1px solid #ccc; color: black; margin: 5px; border-radius: 25px; transition: background-color 0.2s ease, color 0.2s ease;}
-        .time-button:hover{ background-color: #78866B;}
-        .time-button.selected {background-color: #4C6444; color: white; border: none;}
- /*dito yung iba kulay ng days para unique salonga lang tignan pre */
- .calendar th:first-child,
-    .calendar th:nth-child(2),
-    .calendar th:nth-child(3),
-    .calendar th:nth-child(4),
-    .calendar th:nth-child(5),
-    .calendar th:nth-child(6),
-    .calendar th:nth-child(7) {
-        background-color: #FFFFFF; 
-    }
-
-        /*.gobackbtn {
-            background-color: #89CFF0;
-            border-radius: 5px;
-        }
-
-        .subbtn{
-            background-color: #008000;
-        }*/
+        .calendar td.selected { background-color: #4C6444 !important; color: #FFFFFF; }
+        .calendar td.disabled { background-color: #d3d3d3; color: #a9a9a9; pointer-events: none; }
+        .time-button { background-color: white; border: 1px solid #ccc; color: black; margin: 5px; border-radius: 25px; transition: background-color 0.2s ease, color 0.2s ease; }
+        .time-button:hover { background-color: #78866B; }
+        .time-button.selected { background-color: #4C6444; color: white; border: none; }
+        .calendar th:first-child,
+        .calendar th:nth-child(2),
+        .calendar th:nth-child(3),
+        .calendar th:nth-child(4),
+        .calendar th:nth-child(5),
+        .calendar th:nth-child(6),
+        .calendar th:nth-child(7) { background-color: #FFFFFF; }
     </style>
 </head>
 <body>
@@ -49,7 +35,6 @@
                 <h2 class="text-center mb-4">Select Date and Time</h2>
                 
                 <!-- Back button to user.php -->
-                  
                 <div class="text-center mb-3">
                     <button onclick="window.location.href='<?= base_url('user') ?>'" class="btn btn-secondary btn-sm">Go Back</button>
                 </div>
@@ -77,6 +62,7 @@
                             <button class="btn btn-outline-primary btn-sm" id="prev-month">Previous</button>
                             <button class="btn btn-outline-primary btn-sm" id="next-month">Next</button>
                         </div>
+                        
                         <!-- Shows the calendar - ryk -->
                         <table class="table table-bordered-none text-center">
                             <thead>
@@ -109,6 +95,8 @@
 <script>
     const calendarTitle = document.getElementById('calendar-title');
     const calendarBody = document.getElementById('calendar-body');
+    const prevMonthBtn = document.getElementById('prev-month');
+    const nextMonthBtn = document.getElementById('next-month');
     let currentMonth = new Date().getMonth();
     let currentYear = new Date().getFullYear();
     let selectedCell = null;
@@ -117,9 +105,17 @@
     function renderCalendar(month, year) {
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const today = new Date();
 
         calendarBody.innerHTML = '';
         calendarTitle.innerHTML = `${new Date(year, month).toLocaleString('default', { month: 'long' })} ${year}`;
+
+        // Disable "Previous" button if viewing the current month and year
+        if (year === today.getFullYear() && month === today.getMonth()) {
+            prevMonthBtn.disabled = true;
+        } else {
+            prevMonthBtn.disabled = false;
+        }
 
         let date = 1;
         for (let i = 0; i < 6; i++) {
@@ -134,15 +130,19 @@
                     cell.innerHTML = date;
                     cell.classList.add('clickable');
 
-                    cell.addEventListener('click', () => {
-                        if (selectedCell) {
-                            selectedCell.classList.remove('selected');
-                        }
-                        cell.classList.add('selected');
-                        selectedCell = cell;
-                        document.getElementById('selectedDate').value = `${year}-${month + 1}-${cell.innerHTML}`; //pota eto lang naman problem
-                    });
-
+                    const cellDate = new Date(year, month, date);
+                    if (cellDate < today) {
+                        cell.classList.add('disabled');
+                    } else {
+                        cell.addEventListener('click', () => {
+                            if (selectedCell) {
+                                selectedCell.classList.remove('selected');
+                            }
+                            cell.classList.add('selected');
+                            selectedCell = cell;
+                            document.getElementById('selectedDate').value = `${year}-${month + 1}-${cell.innerHTML}`;
+                        });
+                    }
                     date++;
                 }
                 row.appendChild(cell);
@@ -151,7 +151,7 @@
         }
     }
 
-    //Gets selected or clicked time 
+    // Handle time button selection
     const timeButtons = document.querySelectorAll('.time-button');
     timeButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -164,35 +164,42 @@
         });
     });
 
-    //Added form handling for date and time submission 
-    document.getElementById('appointmentForm').addEventListener ('submit', (e) => {
+    // Prevent form submission without selected date and time
+    document.getElementById('appointmentForm').addEventListener('submit', (e) => {
         const selectedDate = document.getElementById('selectedDate').value;
         const selectedTime = document.getElementById('selectedTime').value;
-       
-        if  (!selectedDate || !selectedTime){
-              e.preventDefault()
+
+        if (!selectedDate || !selectedTime) {
+            e.preventDefault();
             alert('Please select a proper date and time to proceed!');
         }
-
-        
     });
 
-    //goes to previous month 
-    document.getElementById('prev-month').addEventListener('click', () => {
-        currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
-        currentYear = (currentMonth === 11) ? currentYear - 1 : currentYear;
+    // Navigate to the previous month
+    prevMonthBtn.addEventListener('click', () => {
+        if (currentMonth > 0) {
+            currentMonth--;
+        } else {
+            currentMonth = 11;
+            currentYear--;
+        }
         renderCalendar(currentMonth, currentYear);
     });
 
-    //goes to next month 
-    document.getElementById('next-month').addEventListener('click', () => {
-        currentMonth = (currentMonth === 11) ? 0 : currentMonth + 1;
-        currentYear = (currentMonth === 0) ? currentYear + 1 : currentYear;
+    // Navigate to the next month
+    nextMonthBtn.addEventListener('click', () => {
+        if (currentMonth < 11) {
+            currentMonth++;
+        } else {
+            currentMonth = 0;
+            currentYear++;
+        }
         renderCalendar(currentMonth, currentYear);
     });
 
     renderCalendar(currentMonth, currentYear);
 </script>
+
 
 </body>
 </html>

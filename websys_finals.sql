@@ -32,7 +32,7 @@ CREATE TABLE `users` (
   `name` varchar(150) NOT NULL,
   `email` varchar(150) NOT NULL,
   `password` varchar(150) NOT NULL,
-  `user_role` varchar(10) NOT NULL,
+  `user_role` varchar(10) NOT NULL DEFAULT 'user',
   `status` varchar(8) NOT NULL DEFAULT 'Active',
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL DEFAULT current_timestamp()
