@@ -49,7 +49,7 @@
                 <h2 class="text-center mb-4">Select Date and Time</h2>
                 
                 <!-- Back button to user.php - ryk -->
-                  <!-- Back button to user.php - ryk -->
+                  
                 <div class="text-center mb-3">
                     <button onclick="window.location.href='<?= base_url('user') ?>'" class="btn btn-secondary btn-sm">Go Back</button>
                 </div>
