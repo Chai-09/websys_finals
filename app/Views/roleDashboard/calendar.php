@@ -48,16 +48,16 @@
             <div class="card shadow-lg p-4">
                 <h2 class="text-center mb-4">Select Date and Time</h2>
                 
-                <!-- Back button to user.php - ryk -->
+                <!-- Back button to user.php -->
                   
                 <div class="text-center mb-3">
                     <button onclick="window.location.href='<?= base_url('user') ?>'" class="btn btn-secondary btn-sm">Go Back</button>
                 </div>
 
-                <!-- Shows chosen worker name - ryk -->
+                <!-- Shows chosen worker name-->
                 <h4>Selected Worker: <?= htmlspecialchars($_GET['workerName'] ?? 'Not selected') ?></h4>
 
-                <!-- Shows time - ryk -->
+                <!-- Shows time -->
                 <div class="row">
                     <div class="col-md-6">
                         <br> <h4>Select Time:</h4> <br>
@@ -151,7 +151,7 @@
         }
     }
 
-    //Gets selected or clicked time - ryk
+    //Gets selected or clicked time 
     const timeButtons = document.querySelectorAll('.time-button');
     timeButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -164,7 +164,7 @@
         });
     });
 
-    //Added form handling for date and time submission - geb
+    //Added form handling for date and time submission 
     document.getElementById('appointmentForm').addEventListener ('submit', (e) => {
         const selectedDate = document.getElementById('selectedDate').value;
         const selectedTime = document.getElementById('selectedTime').value;
@@ -177,14 +177,14 @@
         
     });
 
-    //goes to previous month - ryk
+    //goes to previous month 
     document.getElementById('prev-month').addEventListener('click', () => {
         currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
         currentYear = (currentMonth === 11) ? currentYear - 1 : currentYear;
         renderCalendar(currentMonth, currentYear);
     });
 
-    //goes to next month - ryk
+    //goes to next month 
     document.getElementById('next-month').addEventListener('click', () => {
         currentMonth = (currentMonth === 11) ? 0 : currentMonth + 1;
         currentYear = (currentMonth === 0) ? currentYear + 1 : currentYear;

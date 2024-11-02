@@ -20,11 +20,6 @@
                     <h4>Welcome, <?= esc(session()->get('name')) ?>!</h4>
                     <p><strong>Email:</strong> <?= esc(session()->get('email')) ?></p>
                     <p><strong>User Role: Head Admin</strong></p>
-                <?php else: ?>
-                    <div class="alert alert-warning">
-                        You are not logged in. Please log in first.
-                    </div>
-                <?php endif; ?>
 
                 <!-- Logout Button -->
                 <?php if (session()->get('isLoggedIn')): ?>
@@ -116,6 +111,12 @@
     </div>
 </div>
 <br><br><br><br>
+
+<?php else: ?>
+    <div class="alert alert-warning">
+        You are not logged in. Please log in first.
+    </div>
+<?php endif; ?>
 
 </body>
 </html>

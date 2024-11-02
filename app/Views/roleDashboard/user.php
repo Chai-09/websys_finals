@@ -40,9 +40,7 @@
                 <?php if (session()->get('isLoggedIn')): ?>
                     <h4>Welcome, <?= esc(session()->get('name')) ?>!</h4>
                     <p> User Information: || <strong>Email:</strong> <?= esc(session()->get('email')) ?> || <strong>User Role:</strong> <?= esc(session()->get('user_role')) ?> || </p>
-                <?php else: ?>
-                    <div class="alert alert-warning">You are not logged in. Please log in first.</div>
-                <?php endif; ?>
+                
 
                   <!-- Worker List - ryk -->
                   <div class="worker-list mb-3">
@@ -72,6 +70,10 @@
         </div>
     </div>
 </div>
+
+<?php else: ?>
+    <div class="alert alert-warning">You are not logged in. Please log in first.</div>
+<?php endif; ?>
 
 <script>
     const workers = document.querySelectorAll('.worker');

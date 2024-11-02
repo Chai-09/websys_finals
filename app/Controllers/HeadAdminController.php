@@ -7,6 +7,11 @@ class HeadAdminController extends BaseController
 {
     public function index()
     {
+
+        if (session()->get('user_role') !== 'head_admin') {
+            return redirect()->to('/');
+        }
+
         $role_filter = $this->request->getGet('role_filter') ?? 'all';
         $userModel = new UserModel();
 
@@ -59,6 +64,7 @@ class HeadAdminController extends BaseController
     $userModel->update($id, [
         'name' => $this->request->getPost('name'),
         'email' => $this->request->getPost('email'),
+        'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
         'status' => $this->request->getPost('status'),
     ]);
 

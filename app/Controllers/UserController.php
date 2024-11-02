@@ -24,16 +24,20 @@ class UserController extends BaseController
                 'name'      => $this->request->getVar('name'),
                 'email'     => $this->request->getVar('email'),
                 'password'  => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
-                'user_role' => $this->request->getVar('user_role'),
             ];
             
             $account->save($data);
             
-            return redirect()->to('/signin');
+            return redirect()->to('/');
         } else {
             $data['validation'] = $this->validator;
             return view('register', $data);
         }
+    }
+
+    public function index() 
+    {
+        return view ('/');
     }
 
     public function signin() // Load the sign-in view
@@ -59,25 +63,33 @@ class UserController extends BaseController
                 'name'      => $user['name'],
                 'email'     => $user['email'],
                 'user_role' => $user['user_role'],
+                'status' => $user['status'],
                 'isLoggedIn'=> true,
             ];
             
             session()->set($sessionData);
 
-            
-            switch ($user['user_role']) {
-                case 'head_admin':
-                    return redirect()->to('/head_admin');
-                case 'worker':
-                    return redirect()->to('/workers');
-                case 'user':
-                    return redirect()->to('/user');
-                default:
-                    return redirect()->to('/dashboard');
+            if ($user['status'] === 'Active') {
+
+                switch ($user['user_role']) {
+                    case 'head_admin':
+                        return redirect()->to('/head_admin');
+                    case 'worker':
+                        return redirect()->to('/workers');
+                    case 'user':
+                        return redirect()->to('/user');
+                    default:
+                        return redirect()->to('/dashboard');
+                }
+
+            } else {
+                $data['validation'] = 'Your account is Inactive. Please contact your Head Admin';
+                return view('sign', $data); 
             }
         } else {
             $data['validation'] = 'Invalid email or password.';
             return view('sign', $data); 
+
         }
     }
 
@@ -91,33 +103,13 @@ class UserController extends BaseController
     public function logout()
     {
         session()->destroy(); // Destroy all session data
-        return redirect()->to('/signin'); // Redirect to sign in page
-    }
-
-    /*public function dashboard()
-    {
-        // Check if the user is logged in
-        if (!session()->get('isLoggedIn')) {
-            return redirect()->to('/signin'); // Redirect to sign-in page
-        }
-    
-        // Load the dashboard view
-        return view('dashboard');
-    }*/
-
-    //user_role's to their respective dashboards. here
-    public function headAdminDashboard() //if user_role is head_admin, then ito yung ipapakita - ryk
-    {
-        if (session()->get('user_role') !== 'head_admin') {
-            return redirect()->to('/signin');
-        }
-        return view('roleDashboard/head_admin');
+        return redirect()->to('/'); // Redirect to sign in page
     }
 
     public function workerDashboard() //if user_role is worker, then ito yung ipapakita - ryk
     {
         if (session()->get('user_role') !== 'worker') {
-            return redirect()->to('/signin');
+            return redirect()->to('/');
         }
         return view('roleDashboard/workers');
     }
@@ -125,7 +117,7 @@ class UserController extends BaseController
     public function userDashboard() //if user_role is user, then ito yung ipapakita - ryk
     {
         if (!session()->get('isLoggedIn')) {
-            return redirect()->to('/signin'); // Redirect if not logged in
+            return redirect()->to('/'); // Redirect if not logged in
         }
 
         // Use the WorkerModel to fetch workers
@@ -140,7 +132,7 @@ class UserController extends BaseController
     public function calendar() // shows the calendar and time - ryk
     {
         if (!session()->get('isLoggedIn')) {
-            return redirect()->to('/signin'); // Ensure user is logged in
+            return redirect()->to('/'); // Ensure user is logged in
         }
         return view('roleDashboard/calendar');
     }

@@ -46,20 +46,12 @@
                         <input type="password" name="confirmpassword" class="form-control" value="<?= set_value('confirmpassword') ?>">
                     </div>
                     
-                    <div class="mb-3">
-                        <label class="form-label">User Role: User</label>
-                        <select name="user_role" class="form-select">
-                            
-                            <option value="user">User</option>
-                        </select>
-                    </div>
-                    
                     <button type="submit" class="btn btn-primary w-100 mt-3">Register</button>
                 </form>
 
                 <!-- Link to SignIn -->
                 <div class="text-center mt-3">
-                    <p>Already have an account? <a href="<?= base_url('signin') ?>" class="btn btn-link">Click Here</a></p>
+                    <p>Already have an account? <a href="<?= base_url('/') ?>" class="btn btn-link">Click Here</a></p>
                 </div>
 
             </div>

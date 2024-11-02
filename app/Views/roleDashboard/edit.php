@@ -25,8 +25,15 @@
             <input type="email" class="form-control" name="email" value="<?= esc($account['email']) ?>" required>
         </div>
         <div class="mb-3">
-            <label for="status" class="form-label">Status</label>
-            <input type="text" class="form-control" name="status" value="<?= esc($account['status']) ?>" required>
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" value="<?= esc($account['password']) ?>" required>
+        </div>
+        <div class="mb-3">
+            <label class="status">User Role: User</label>
+            <select name="status" class="form-select">
+                <option value="Active" <?= $account['status'] == 'Active' ? 'selected' : '' ?>>Active</option>
+                <option value="Inactive" <?= $account['status'] == 'Inactive' ? 'selected' : '' ?>>Inactive</option>
+            </select>
         </div>
         <button type="submit" class="btn btn-primary">Update User</button>
     </form>
