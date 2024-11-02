@@ -21,7 +21,7 @@ class HeadAdminController extends BaseController
             $accounts = $userModel->where('user_role', $role_filter)->findAll();
         }
 
-        return view('roleDashboard/head_admin', ['accounts' => $accounts, 'role_filter' => $role_filter]);
+        return view('admin/head_admin', ['accounts' => $accounts, 'role_filter' => $role_filter]);
     }
 
     public function add_worker()
@@ -54,7 +54,7 @@ class HeadAdminController extends BaseController
         throw new \CodeIgniter\Exceptions\PageNotFoundException("User with ID $id not found");
     }
 
-    return view('roleDashboard/edit', ['account' => $account]);
+    return view('admin/edit', ['account' => $account]);
 }
 
 

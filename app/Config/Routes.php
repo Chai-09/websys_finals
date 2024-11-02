@@ -16,8 +16,8 @@ $routes->match(['get', 'post'], '/login', 'UserController::login');
 $routes->match(['post'], '/logout', 'UserController::logout');
 
 // Dashboard routes for specific roles (tinaggal ko yung sa admin dito btw) - pol at geb
-$routes->match(['get', 'post'], '/workers', 'UserController::workerDashboard');
-$routes->match(['get', 'post'], '/user', 'UserController::userDashboard');
+$routes->match(['get', 'post'], '/workers', 'WorkerController::workerDashboard');
+$routes->match(['get', 'post'], '/user', 'CustomerController::userDashboard');
 
 // Routes for head admin dashboard - geb
 $routes->match(['get', 'post'], '/head_admin', 'HeadAdminController::index');
@@ -27,7 +27,7 @@ $routes->match(['get', 'post'], '/head_admin/edit/(:num)', 'HeadAdminController:
 $routes->match(['get', 'post'], '/head_admin/update/(:num)', 'HeadAdminController::update/$1');
 
 // New route for calendar - ryk 
-$routes->get('roleDashboard/calendar', 'UserController::calendar');
+$routes->get('customers/calendar', 'CustomerController::calendar');
 
 // Route for receipts - ryk
-$routes->match(['get', 'post'], 'roleDashboard/receipts', 'UserController::receipts');
+$routes->match(['get', 'post'], 'customers/receipts', 'CustomerController::receipts');
