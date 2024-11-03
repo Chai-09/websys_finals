@@ -5,26 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/CSS/Customers/Style_Calendar.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <style>
-        body { background-color: #1C1C1C; font-family: 'Roboto'; }
-        .card { background-color: #2a2a2a; color: #FFFFFF; top: 20%; margin: -50px 0 0 -50px; border-radius: 35px; }
-        .calendar td { background-color:#FFFFFF;}
-        .calendar td.clickable { cursor: pointer; transition: background-color 0.2s ease; background-color: #FFFFFF; }
-        .calendar td.clickable:hover { background-color: #78866B; }
-        .calendar td.selected { background-color: #4C6444 !important; color: #FFFFFF; }
-        .calendar td.disabled { background-color: #d3d3d3; color: #a9a9a9; pointer-events: none; }
-        .time-button { background-color: white; border: 1px solid #ccc; color: black; margin: 5px; border-radius: 25px; transition: background-color 0.2s ease, color 0.2s ease; }
-        .time-button:hover { background-color: #78866B; }
-        .time-button.selected { background-color: #4C6444; color: white; border: none; }
-        .calendar th:first-child,
-        .calendar th:nth-child(2),
-        .calendar th:nth-child(3),
-        .calendar th:nth-child(4),
-        .calendar th:nth-child(5),
-        .calendar th:nth-child(6),
-        .calendar th:nth-child(7) { background-color: #FFFFFF; }
-    </style>
 </head>
 <body>
 
@@ -81,7 +63,7 @@
                     </div>
                 </div>
 
-                <form id="appointmentForm" action="<?= base_url('customers/receipts') ?>" method="POST">
+                <form id="appointmentForm" action="<?= base_url('receipts') ?>" method="POST">
                     <input type="hidden" name="selectedDate" id="selectedDate">
                     <input type="hidden" name="selectedTime" id="selectedTime">
                     <input type="hidden" name="workerName" value="<?= htmlspecialchars($_GET['workerName'] ?? '') ?>"> <!-- Hidden input for worker name -->

@@ -5,11 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/CSS/Style_Sign.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <style>
-        body { background-color: #1C1C1C; font-family: 'Roboto'; }
-        .card { background-color: #2a2a2a; color: #FFFFFF; top: 50%; margin: -50px 0 0 -50px; border-radius: 35px; }
-    </style>
 </head>
 <body>
 

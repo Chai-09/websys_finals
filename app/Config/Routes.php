@@ -27,7 +27,7 @@ $routes->match(['get', 'post'], '/head_admin/edit/(:num)', 'HeadAdminController:
 $routes->match(['get', 'post'], '/head_admin/update/(:num)', 'HeadAdminController::update/$1');
 
 // New route for calendar - ryk 
-$routes->get('customers/calendar', 'CustomerController::calendar');
+$routes->get('/calendar', 'CustomerController::calendar');
 
 // Route for receipts - ryk
-$routes->match(['get', 'post'], 'customers/receipts', 'CustomerController::receipts');
+$routes->match(['post'], '/receipts', 'CustomerController::receipts');

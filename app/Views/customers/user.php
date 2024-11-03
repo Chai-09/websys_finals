@@ -5,28 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/CSS/Customers/Style_User.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <style>
-        body { background-color: #1C1C1C; font-family: 'Roboto'; }
-        .card { background-color: #2a2a2a; color: #FFFFFF; top: 50%; margin: -50px 0 0 -50px; border-radius: 35px; }
-        .worker-list .worker { cursor: pointer; transition: background-color 0.2s ease; margin-bottom: 10px; }
-        .worker-list .worker:hover, .worker-list .worker.selected { background-color: #007bff; color: #ffffff; }
-        .video-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-
-    </style>
 </head>
 <body>
 
 <video autoplay muted loop id="myVideo" class="video-bg"> <!-- Nilagyan ko lang ng class pre HAHAH -->
-  <source src="userbg.mp4" type="video/mp4">
+  <source src="assets/userbg.mp4" type="video/mp4">
 </video>
 
 <!--Shows user dashboard -->
@@ -45,7 +30,7 @@
                   <!-- Worker List -->
                   <div class="worker-list mb-3">
                     <h4>Select a Worker:</h4>
-                    <form action="<?= base_url('customers/calendar') ?>" method="GET">
+                    <form action="<?= base_url('calendar') ?>" method="GET">
                         <select name="workerName" id="worker" class="form-select mb-3" style="text-align: center" required>
                             <option value="">-- Select Worker --</option>
                             <?php if (!empty($workers)): ?>
@@ -97,7 +82,7 @@
     //gets worker's name - ryk
     continueBtn.addEventListener('click', () => {
         const workerName = selectedWorker.innerText;
-        window.location.href = "<?= base_url('roleDashboard/calendar') ?>?workerName=" + encodeURIComponent(workerName);
+        window.location.href = "<?= base_url('calendar') ?>?workerName=" + encodeURIComponent(workerName);
     });
 </script>
 
