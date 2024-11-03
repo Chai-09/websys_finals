@@ -27,7 +27,14 @@ class CustomerController extends BaseController
             return redirect()->to('/'); // Ensure user is logged in
         }
 
-        return view('customers/calendar');
+        // kuhain worker name from post
+        $workerName = $this->request->getPost('workerName');
+        // pass yung worker name to calendar.php
+        $data = [
+            'workerName' => $workerName
+        ];
+
+        return view('customers/calendar', $data);
     }
 
     public function receipts() // shows the receipt from user and calendar file - ryk

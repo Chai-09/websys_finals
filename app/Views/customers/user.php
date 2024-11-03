@@ -30,7 +30,7 @@
                   <!-- Worker List -->
                   <div class="worker-list mb-3">
                     <h4>Select a Worker:</h4>
-                    <form action="<?= base_url('calendar') ?>" method="GET">
+                    <form action="<?= base_url('calendar') ?>" method="POST"> <!-- Change ko lang to POST -->
                         <select name="workerName" id="worker" class="form-select mb-3" style="text-align: center" required>
                             <option value="">-- Select Worker --</option>
                             <?php if (!empty($workers)): ?>

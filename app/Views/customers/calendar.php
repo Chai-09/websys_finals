@@ -22,7 +22,7 @@
                 </div>
 
                 <!-- Shows chosen worker name-->
-                <h4>Selected Worker: <?= htmlspecialchars($_GET['workerName'] ?? 'Not selected') ?></h4>
+                <h4>Selected Worker: <?= htmlspecialchars($workerName ?? 'Not selected') ?></h4> <!-- $_GET['workerName'] tinangal toh para post na -->
 
                 <!-- Shows time -->
                 <div class="row">
@@ -66,7 +66,8 @@
                 <form id="appointmentForm" action="<?= base_url('receipts') ?>" method="POST">
                     <input type="hidden" name="selectedDate" id="selectedDate">
                     <input type="hidden" name="selectedTime" id="selectedTime">
-                    <input type="hidden" name="workerName" value="<?= htmlspecialchars($_GET['workerName'] ?? '') ?>"> <!-- Hidden input for worker name -->
+                    <!-- $_GET['workerName'] same lang din dito tinangal toh para post na -->
+                    <input type="hidden" name="workerName" value="<?= htmlspecialchars($workerName ?? '') ?>"> <!-- Hidden input for worker name -->
                     <button type="submit" class="btn btn-primary mt-3">Submit</button>
                 </form>
             </div>
@@ -153,7 +154,7 @@
 
         if (!selectedDate || !selectedTime) {
             e.preventDefault();
-            alert('Please select a proper date and time to proceed!');
+            alert('Please select both date and time to continue!');
         }
     });
 
