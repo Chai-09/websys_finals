@@ -83,7 +83,7 @@ class UserController extends BaseController
                 }
 
             } else {
-                $data['validation'] = 'Your account is Inactive. Please contact your Head Admin';
+                $data['validation'] = 'Your account is Inactive. Please contact your Head Admin!';
                 return view('sign', $data); 
             }
         } else {

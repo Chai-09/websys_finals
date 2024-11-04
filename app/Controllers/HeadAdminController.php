@@ -58,18 +58,29 @@ class HeadAdminController extends BaseController
 }
 
 
-    public function update($id)
+public function update($id)
 {
     $userModel = new UserModel();
-    $userModel->update($id, [
+
+    // Prepare data array for updating
+    $data = [
         'name' => $this->request->getPost('name'),
         'email' => $this->request->getPost('email'),
-        'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
         'status' => $this->request->getPost('status'),
-    ]);
+    ];
+
+    // Only update the password if a new one is provided
+    $password = $this->request->getPost('password');
+    if (!empty($password)) {
+        $data['password'] = password_hash($password, PASSWORD_DEFAULT);
+    }
+
+    // Update the user data
+    $userModel->update($id, $data);
 
     return redirect()->to('/head_admin');
 }
+
 
 }
 

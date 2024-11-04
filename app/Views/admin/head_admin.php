@@ -51,8 +51,11 @@
                     <input type="password" class="form-control" name="password" required>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="status" class="form-label">Status</label>
-                    <input type="text" class="form-control" name="status" value="Active" required>
+                <label class="status">User Role: User</label>
+            <select name="status" class="form-select">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+                </select>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Add Worker</button>

@@ -26,7 +26,7 @@
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" name="password" value="<?= esc($account['password']) ?>" required>
+            <input type="text" class="form-control" name="password" value="" >
         </div>
         <div class="mb-3">
             <label class="status">User Role: User</label>
