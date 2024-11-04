@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Head Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/CSS/Admins/Style_HeadAdmin.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
 </head>
@@ -18,8 +19,7 @@
 
                 <?php if (session()->get('isLoggedIn')): ?>
                     <h4>Welcome, <?= esc(session()->get('name')) ?>!</h4>
-                    <p><strong>Email:</strong> <?= esc(session()->get('email')) ?></p>
-                    <p><strong>User Role: Head Admin</strong></p>
+                    <p> || <strong>Email:</strong> <?= esc(session()->get('email')) ?> || <strong>User Role: Head Admin</strong> || </p>
 
                 <!-- Logout Button -->
                 <?php if (session()->get('isLoggedIn')): ?>
@@ -30,9 +30,9 @@
             </div>
         </div>
     </div>
-
+<br><br><br><br>
     
-<br> <br>
+<br><br>
     <!-- Add New Workers (if may kulang pasabi) -->
     <div class="card p-4 mb-4">
         <h4>Add New Worker</h4>
@@ -65,7 +65,7 @@
     <!-- Filter Options (not sure if need pa yung head_admin since 1 lang naman ata-->
     <div class="mt-5">
         <form method="get" class="mb-4">
-            <label for="filter" class="form-label">Filter by Role:</label>
+            <label for="filter" class="form-label"><span id="filter_label">Filter by Role:</span></label>
             <select name="role_filter" class="form-select" id="filter" onchange="this.form.submit()">
                 <option value="all" <?= ($role_filter === 'all') ? 'selected' : '' ?>>All Accounts</option>
                 <option value="worker" <?= ($role_filter === 'worker') ? 'selected' : '' ?>>Worker Accounts</option>
