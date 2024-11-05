@@ -5,7 +5,7 @@ use App\Models\UserModel;
 
 class WorkerController extends BaseController
 {
-    public function workerDashboard() //if user_role is worker, then ito yung ipapakita - ryk
+    public function workerDashboard() // If user_role = Worker, it will show the following - eiryk
     {
         if (session()->get('user_role') !== 'worker') {
             return redirect()->to('/');

@@ -8,28 +8,28 @@ class CustomerController extends BaseController
 {
     
 
-    public function userDashboard() //if user_role is user, then ito yung ipapakita - ryk
+    public function userDashboard() // If user_role = User, it will show the following - eiryk
     {
         if (!session()->get('isLoggedIn')) {
-            return redirect()->to('/'); // Redirect if not logged in
+            return redirect()->to('/'); // Redirects the User if they're not Logged In
         }
 
-        // Use the WorkerModel to fetch workers
+        // Uses the WorkerModel to Retrieve Workers
         $workerModel = new WorkerModel();
-        $data['workers'] = $workerModel->getWorkers(); // Get workers from the database
+        $data['workers'] = $workerModel->getWorkers(); // Retrieves the Workers from the Database
 
-        return view('customers/user', $data); // Pass workers data to the view
+        return view('customers/user', $data); // Passes the Workers' Data to the View
     }
 
-    public function calendar() // shows the calendar and time - ryk
+    public function calendar() // Shows the Calendar and Time - eiryk
     {
         if (!session()->get('isLoggedIn')) {
             return redirect()->to('/'); // Ensure user is logged in
         }
 
-        // kuhain worker name from post
+        // Retrieves the Worker Name from POST
         $workerName = $this->request->getPost('workerName');
-        // pass yung worker name to calendar.php
+        // Passes Worker Name to calendar.php
         $data = [
             'workerName' => $workerName
         ];
@@ -37,12 +37,12 @@ class CustomerController extends BaseController
         return view('customers/calendar', $data);
     }
 
-    public function receipts() // shows the receipt from user and calendar file - ryk
+    public function receipts() // Shows the Receipt from the User and Calendar Files - eiryk
     {
         $data = [
             'selectedDate' => $this->request->getPost('selectedDate'),
             'selectedTime' => $this->request->getPost('selectedTime'),
-            'workerName' => $this->request->getVar('workerName'), // Capture the worker name
+            'workerName' => $this->request->getVar('workerName'), // Captures the Worker Name
         ];
         return view('customers/receipts', $data);
     }

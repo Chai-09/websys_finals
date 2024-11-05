@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class WorkerModel extends Model
 {
-    // Fetch users in database - ryk
+    // Fetches the Users' Data in the Database - eiryk
     protected $table = 'users'; 
     protected $primaryKey = 'id';   
     protected $allowedFields = [
@@ -19,6 +19,6 @@ class WorkerModel extends Model
 
     public function getWorkers() 
     {
-        return $this->where('user_role', 'worker')->findAll(); // Fetch workers based on user_role - ryk
+        return $this->where('user_role', 'worker')->findAll(); // Fetches the Workers Based on user_role - eiryk
     }
 }

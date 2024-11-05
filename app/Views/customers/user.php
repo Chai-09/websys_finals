@@ -10,27 +10,27 @@
 </head>
 <body>
 
-<video autoplay muted loop id="myVideo" class="video-bg"> <!-- Nilagyan ko lang ng class pre HAHAH -->
+<video autoplay muted loop id="myVideo" class="video-bg">
   <source src="assets/userbg.mp4" type="video/mp4">
 </video>
 
-<!--Shows user dashboard -->
+<!-- Shows User Dashboard -->
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow-lg p-4">
                 <h2 class="text-center mb-4">User Dashboard</h2>
 
-                <!--Error Handling -->
+                <!-- For Error Handling -->
                 <?php if (session()->get('isLoggedIn')): ?>
                     <h4>Welcome, <?= esc(session()->get('name')) ?>!</h4>
                     <p> User Information: || <strong>Email:</strong> <?= esc(session()->get('email')) ?> || <strong>User Role:</strong> <?= esc(session()->get('user_role')) ?> || </p>
                 
 
-                  <!-- Worker List -->
+                  <!-- Shows the List of Workers -->
                   <div class="worker-list mb-3">
                     <h4>Select a Worker:</h4>
-                    <form action="<?= base_url('calendar') ?>" method="POST"> <!-- Change ko lang to POST -->
+                    <form action="<?= base_url('calendar') ?>" method="POST">
                         <select name="workerName" id="worker" class="form-select mb-3" style="text-align: center" required>
                             <option value="">-- Select Worker --</option>
                             <?php if (!empty($workers)): ?>
@@ -79,7 +79,7 @@
         });
     });
 
-    //gets worker's name - ryk
+    // Retrieves the Name of the Chosen Worker - eiryk
     continueBtn.addEventListener('click', () => {
         const workerName = selectedWorker.innerText;
         window.location.href = "<?= base_url('calendar') ?>?workerName=" + encodeURIComponent(workerName);

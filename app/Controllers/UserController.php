@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 use App\Models\UserModel;
-use App\Models\WorkerModel; // added for worker - ryk
+use App\Models\WorkerModel; // Added for Workers - eiryk
 
 class UserController extends BaseController
 {
-    public function store() // Save Data in Register.php
+    public function store() // Saves the Data in Register.php
     {
         helper(['form']);
          
@@ -40,14 +40,14 @@ class UserController extends BaseController
         return view ('/');
     }
 
-    public function signin() // Load the sign-in view
+    public function signin() // Loads the Sign-In view
     {
         helper(['form']);
         $data = [];
         return view('sign', $data);
     }
 
-    public function login() // Login Logic
+    public function login() // Login Page Logic
     {
         helper(['form']);
         $email = $this->request->getVar('email');
@@ -93,7 +93,7 @@ class UserController extends BaseController
         }
     }
 
-    public function register() // form of register
+    public function register() // Form for Registration
     {
         helper(['form']);
         $data = [];
@@ -102,8 +102,8 @@ class UserController extends BaseController
 
     public function logout()
     {
-        session()->destroy(); // Destroy all session data
-        return redirect()->to('/'); // Redirect to sign in page
+        session()->destroy(); // Destroys All Session Data
+        return redirect()->to('/'); // Redirects to Sign-In Page
     }
 
 }

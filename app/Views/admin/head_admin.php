@@ -33,7 +33,7 @@
 <br><br><br><br>
     
 <br><br>
-    <!-- Add New Workers (if may kulang pasabi) -->
+    <!-- Add New Workers -->
     <div class="card p-4 mb-4">
         <h4>Add New Worker</h4>
         <form action="<?= base_url('/head_admin/add_worker') ?>" method="post">
@@ -62,7 +62,7 @@
         </form>
     </div>
 
-    <!-- Filter Options (not sure if need pa yung head_admin since 1 lang naman ata-->
+    <!-- Filter Options -->
     <div class="mt-5">
         <form method="get" class="mb-4">
             <label for="filter" class="form-label"><span id="filter_label">Filter by Role:</span></label>

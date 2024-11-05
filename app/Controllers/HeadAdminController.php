@@ -62,20 +62,20 @@ public function update($id)
 {
     $userModel = new UserModel();
 
-    // Prepare data array for updating
+    // Prepares the Data Array for Updating
     $data = [
         'name' => $this->request->getPost('name'),
         'email' => $this->request->getPost('email'),
         'status' => $this->request->getPost('status'),
     ];
 
-    // Only update the password if a new one is provided
+    // Only Updates the Password if a New One is Provided
     $password = $this->request->getPost('password');
     if (!empty($password)) {
         $data['password'] = password_hash($password, PASSWORD_DEFAULT);
     }
 
-    // Update the user data
+    // Updates the User Data
     $userModel->update($id, $data);
 
     return redirect()->to('/head_admin');

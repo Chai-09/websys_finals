@@ -36,7 +36,7 @@
                     <button type="submit" class="btn btn-primary w-100 mt-3">Sign In</button>
                 </form>
 
-                <!-- Link to Registration -->
+                <!-- Link to Registration Page -->
                 <div class="text-center mt-3">
                     <p>Don't have an account? <a href="<?= base_url('register') ?>" class="btn btn-link">Click Here</a></p>
                 </div>

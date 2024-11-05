@@ -10,11 +10,10 @@
 <body>
 
 <?php
-// Addded lang time date shet
-$myDate = date('Y-m-d h:i:s')
+    $myDate = date('Y-m-d h:i:s')
 ?> 
 
-<!-- Shows user's name and email, chosen worker, date and time selected, and time of booking - ryk -->
+<!-- Shows the User's Information, Chosen Worker, Selected Date and Time, and Time of Booking - eiryk -->
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -28,7 +27,7 @@ $myDate = date('Y-m-d h:i:s')
                 <p><strong>Time of Booking:</strong> <?= htmlspecialchars($myDate) ?></p>
                 
                 <br>
-                <div class="text-center mb-3"> <!-- Back button to dashboard -->
+                <div class="text-center mb-3"> <!-- Back Button to Dashboard -->
                     <button onclick="window.location.href='<?= base_url('user') ?>'" class="btn btn-secondary btn-sm">Back to Dashboard</button>
                 </div>
             </div>

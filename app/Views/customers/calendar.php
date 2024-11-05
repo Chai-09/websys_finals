@@ -16,15 +16,15 @@
             <div class="card shadow-lg p-4">
                 <h2 class="text-center mb-4">Select Date and Time</h2>
                 
-                <!-- Back button to user.php -->
+                <!-- Back Button to User Page -->
                 <div class="text-center mb-3">
                     <button onclick="window.location.href='<?= base_url('user') ?>'" class="btn btn-secondary btn-sm">Go Back</button>
                 </div>
 
-                <!-- Shows chosen worker name-->
-                <h4>Selected Worker: <?= htmlspecialchars($workerName ?? 'Not selected') ?></h4> <!-- $_GET['workerName'] tinangal toh para post na -->
+                <!-- Shows the Name of Chosen Worker -->
+                <h4>Selected Worker: <?= htmlspecialchars($workerName ?? 'Not selected') ?></h4>
 
-                <!-- Shows time -->
+                <!-- Shows the Available Time Selections -->
                 <div class="row">
                     <div class="col-md-6">
                         <br> <h4>Select Time:</h4> <br>
@@ -45,7 +45,7 @@
                             <button class="btn btn-outline-primary btn-sm" id="next-month">Next</button>
                         </div>
                         
-                        <!-- Shows the calendar - ryk -->
+                        <!-- Shows the Calendar - ryk -->
                         <table class="table table-bordered-none text-center">
                             <thead>
                                 <tr>
@@ -66,8 +66,7 @@
                 <form id="appointmentForm" action="<?= base_url('receipts') ?>" method="POST">
                     <input type="hidden" name="selectedDate" id="selectedDate">
                     <input type="hidden" name="selectedTime" id="selectedTime">
-                    <!-- $_GET['workerName'] same lang din dito tinangal toh para post na -->
-                    <input type="hidden" name="workerName" value="<?= htmlspecialchars($workerName ?? '') ?>"> <!-- Hidden input for worker name -->
+                    <input type="hidden" name="workerName" value="<?= htmlspecialchars($workerName ?? '') ?>"> <!-- Hidden Input for Name of Worker -->
                     <button type="submit" class="btn btn-primary mt-3">Submit</button>
                 </form>
             </div>
@@ -93,7 +92,7 @@
         calendarBody.innerHTML = '';
         calendarTitle.innerHTML = `${new Date(year, month).toLocaleString('default', { month: 'long' })} ${year}`;
 
-        // Disable "Previous" button if viewing the current month and year
+        // Disables the "Previous" Button when Viewing the Current Month and Year
         if (year === today.getFullYear() && month === today.getMonth()) {
             prevMonthBtn.disabled = true;
         } else {
@@ -134,7 +133,7 @@
         }
     }
 
-    // Handle time button selection
+    // Handles the Button for Time Selection
     const timeButtons = document.querySelectorAll('.time-button');
     timeButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -147,7 +146,7 @@
         });
     });
 
-    // Prevent form submission without selected date and time
+    // Prevents Form Submission if the User Doesn't Select a Date and Time
     document.getElementById('appointmentForm').addEventListener('submit', (e) => {
         const selectedDate = document.getElementById('selectedDate').value;
         const selectedTime = document.getElementById('selectedTime').value;
@@ -158,7 +157,7 @@
         }
     });
 
-    // Navigate to the previous month
+    // Navigation to the Previous Month
     prevMonthBtn.addEventListener('click', () => {
         if (currentMonth > 0) {
             currentMonth--;
@@ -169,7 +168,7 @@
         renderCalendar(currentMonth, currentYear);
     });
 
-    // Navigate to the next month
+    // Navigation to the Next Month
     nextMonthBtn.addEventListener('click', () => {
         if (currentMonth < 11) {
             currentMonth++;

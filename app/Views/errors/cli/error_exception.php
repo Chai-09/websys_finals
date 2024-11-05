@@ -2,7 +2,7 @@
 
 use CodeIgniter\CLI\CLI;
 
-// The main Exception
+// The Main Exception
 CLI::write('[' . $exception::class . ']', 'light_gray', 'red');
 CLI::write($message);
 CLI::write('at ' . CLI::color(clean_path($exception->getFile()) . ':' . $exception->getLine(), 'green'));
@@ -20,7 +20,7 @@ while ($prevException = $last->getPrevious()) {
     CLI::newLine();
 }
 
-// The backtrace
+// The Backtrace
 if (defined('SHOW_DEBUG_BACKTRACE') && SHOW_DEBUG_BACKTRACE) {
     $backtraces = $last->getTrace();
 
