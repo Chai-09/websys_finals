@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\UserModel;
+use App\Models\BookingModel;
 
 class WorkerController extends BaseController
 {
@@ -10,7 +11,17 @@ class WorkerController extends BaseController
         if (session()->get('user_role') !== 'worker') {
             return redirect()->to('/');
         }
-        return view('workers/workers');
+
+
+        //Find the receipt that only booked that specific worker in the database using session (eg, if si jay worker, puro mga receipts lang niya magpapakita).
+
+        $bookingModel = new BookingModel();
+        $bookings = $bookingModel->where('worker_name', session()->get('name')) -> findall();
+
+
+
+
+        return view('workers/workers',['bookings' => $bookings]);
     }
 }
 

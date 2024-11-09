@@ -60,6 +60,48 @@
     <div class="alert alert-warning">You are not logged in. Please log in first.</div>
 <?php endif; ?>
 
+<br><br><br><br><br><br>
+
+<!-- Bookings ng customer -->
+<div class="container mt-5">
+            <h2 class="text-center">Your Current Bookings</h2>
+            
+                <table class="table table-striped table-bordered">
+                    <thead class="table-dark">
+
+                        <tr>
+
+                        <th>Worker Selected</th>
+                        <th>Date Selected</th>
+                        <th>Time Selected</th>
+                        <th>Time of Booking</th>
+
+                        </tr>
+
+                     </thead>
+                    <h>
+                        <?php if (!empty($bookings)): ?>
+                            <?php foreach ($bookings as $booking): ?>
+
+                                <tr>
+
+                                <td><?= esc($booking['worker_name']) ?></td>
+                                <td><?= esc($booking['date_selected']) ?></td>
+                                <td><?= esc($booking['time_selected']) ?></td>
+                                <td><?= esc($booking['time_of_booking']) ?></td>
+
+                                </tr>
+
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="5" class="text-center"> You have no Bookings Scheduled!</td?>
+                                </tr>
+                            <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
+
 <script>
     const workers = document.querySelectorAll('.worker');
     const continueBtn = document.getElementById('continue-btn');
