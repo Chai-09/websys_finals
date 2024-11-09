@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2024 at 01:31 PM
+-- Generation Time: Nov 09, 2024 at 05:25 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -49,7 +49,8 @@ INSERT INTO `bookings` (`id`, `date_selected`, `time_selected`, `time_of_booking
 (24, '2024-11-23', '09:00 AM', '2024-11-09 20:16:45', 13, 8),
 (25, '2024-11-20', '12:00 PM', '2024-11-09 20:17:16', 7, 14),
 (26, '2024-11-10', '01:00 PM', '2024-11-09 20:17:22', 9, 14),
-(27, '2024-11-23', '10:00 AM', '2024-11-09 20:17:29', 13, 14);
+(27, '2024-11-23', '10:00 AM', '2024-11-09 20:17:29', 13, 14),
+(30, '2024-11-21', '09:00 AM', '2024-11-10 00:19:29', 18, 19);
 
 --
 -- Indexes for dumped tables
@@ -71,7 +72,7 @@ ALTER TABLE `bookings`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Constraints for dumped tables
@@ -81,8 +82,8 @@ ALTER TABLE `bookings`
 -- Constraints for table `bookings`
 --
 ALTER TABLE `bookings`
-  ADD CONSTRAINT `bookings_ibfk_1` FOREIGN KEY (`worker_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `bookings_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `bookings_ibfk_1` FOREIGN KEY (`worker_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `bookings_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

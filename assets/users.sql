@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2024 at 01:31 PM
+-- Generation Time: Nov 09, 2024 at 05:25 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -49,7 +49,9 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `user_role`, `status`, `
 (9, 'Jay \"Sarap\" San Pascual Jr.', 'jay@gmail.com', '$2y$10$VV9E3koLk2X6MsKJKiptRul5fjFESwbF5hXZdhhrNx/E.JSKM4gYW', 'worker', 'Active', '2024-10-26 21:52:39', '2024-10-26 21:52:39'),
 (12, 'brandon', 'brandon@gmail.com', '$2y$10$RpjXmLHlQwXJ7rbInE5KC..G/yIbBd6RDmtGbcQZjp3blrQ2wFRly', 'user', 'Active', '2024-11-04 09:18:37', '2024-11-04 09:18:37'),
 (13, 'Him', 'him@gmail.com', '$2y$10$5.gEMqSSd.r3tSpuA0xxr.bq60TGY523lU/EkkY4.ExFJWHp8hRfW', 'worker', 'Active', '2024-11-04 09:45:26', '2024-11-04 09:45:26'),
-(14, 'moist', 'moist@gmail.com', '$2y$10$KDJTet0zdq.tBGp/JDbhvu8Og751Ik/1rOoSeHv1UtCA/YwI6Jb4W', 'user', 'Active', '2024-11-08 20:21:22', '2024-11-08 20:21:22');
+(14, 'moist', 'moist@gmail.com', '$2y$10$KDJTet0zdq.tBGp/JDbhvu8Og751Ik/1rOoSeHv1UtCA/YwI6Jb4W', 'user', 'Active', '2024-11-08 20:21:22', '2024-11-08 20:21:22'),
+(18, 'john', 'john@gmail.com', '$2y$10$2PLLNE0cMfXJ2ZNHx8weVO6yOuk7AEdxOXyYdHuEOmLyBWxrB6zlC', 'worker', 'Active', '2024-11-10 00:16:52', '2024-11-10 00:16:52'),
+(19, 'kyrie', 'kyrie@gmail.com', '$2y$10$4MNHsIyb.l4X0RpuM052rerkD20AOmd4N7PLfTINoprMqr1SRD5Dy', 'user', 'Active', '2024-11-10 00:19:05', '2024-11-10 00:19:05');
 
 --
 -- Indexes for dumped tables
@@ -69,7 +71,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
