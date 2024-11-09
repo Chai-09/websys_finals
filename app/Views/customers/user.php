@@ -31,11 +31,11 @@
                   <div class="worker-list mb-3">
                     <h4>Select a Worker:</h4>
                     <form action="<?= base_url('calendar') ?>" method="POST">
-                        <select name="workerName" id="worker" class="form-select mb-3" style="text-align: center" required>
+                        <select name="workerId" id="worker" class="form-select mb-3" style="text-align: center" required>
                             <option value="">-- Select Worker --</option>
                             <?php if (!empty($workers)): ?>
                                 <?php foreach ($workers as $worker): ?>
-                                    <option value="<?= esc($worker['name']) ?>"><?= esc($worker['name']) ?></option>
+                                    <option value="<?= esc($worker['id']) ?>"><?= esc($worker['name']) ?></option>
                                 <?php endforeach; ?>
                             <?php else: ?>
                                 <option>No workers available</option>
@@ -114,8 +114,9 @@
             }
             worker.classList.add('selected');
             selectedWorker = worker;
-
-            document.getElementById('selectedWorker').value = worker.innerText;
+            
+            document.getElementById('selectedWorkerId').value = worker.dataset.workerId;
+            document.getElementById('selectedWorkerName').value = worker.innerText;
 
             continueBtn.classList.remove('d-none'); 
         });

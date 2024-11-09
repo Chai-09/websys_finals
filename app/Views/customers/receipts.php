@@ -10,7 +10,8 @@
 <body>
 
 <?php
-    $myDate = date('Y-m-d h:i:s')
+    date_default_timezone_set('Asia/Manila');
+    $myDate = date('Y-m-d H:i:s')
 ?> 
 
 <!-- Shows the User's Information, Chosen Worker, Selected Date and Time, and Time of Booking - eiryk -->

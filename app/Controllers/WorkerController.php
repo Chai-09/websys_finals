@@ -16,7 +16,7 @@ class WorkerController extends BaseController
         //Find the receipt that only booked that specific worker in the database using session (eg, if si jay worker, puro mga receipts lang niya magpapakita).
 
         $bookingModel = new BookingModel();
-        $bookings = $bookingModel->where('worker_name', session()->get('name')) -> findall();
+        $bookings = $bookingModel->getWorkerBookings(session()->get('id'));
 
 
 

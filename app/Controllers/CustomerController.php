@@ -5,6 +5,7 @@ use App\Models\UserModel;
 use App\Models\WorkerModel;
 use App\Models\BookingModel; //Adding so that it can save in database
 
+date_default_timezone_set('Asia/Manila');
 class CustomerController extends BaseController
 {
     
@@ -21,7 +22,7 @@ class CustomerController extends BaseController
 
         //Similar to the workerDashboard() function, retrieves the data from database base on customer email
         $bookingModel = new BookingModel();
-        $data['bookings'] = $bookingModel->where('customer_email', session()->get('email'))->findAll();
+        $data['bookings'] = $bookingModel->getCustomerBookings(session()->get('id'));
 
         return view('customers/user', $data); // Passes the Workers' Data to the View
     }
@@ -33,37 +34,50 @@ class CustomerController extends BaseController
         }
 
         // Retrieves the Worker Name from POST
-        $workerName = $this->request->getPost('workerName');
+        $workerId = $this->request->getPost('workerId');
+
+        $workerModel = new WorkerModel();
+        $worker = $workerModel->find($workerId);
+
         // Passes Worker Name to calendar.php
         $data = [
-            'workerName' => $workerName
+            'workerId' => $workerId,
+            'workerName' => $worker['name'] ?? ''
         ];
+
+        
 
         return view('customers/calendar', $data);
     }
 
     public function receipts() // Shows the Receipt from the User and Calendar Files - eiryk
     {
+        $data = $this->request->getPost();
+        
+
         $data = [
             'selectedDate' => $this->request->getPost('selectedDate'),
             'selectedTime' => $this->request->getPost('selectedTime'),
-            'workerName' => $this->request->getVar('workerName'), // Captures the Worker Name
+            'worker_id' => $this->request->getPost('workerId'), // Captures the Worker Name
+            'workerName' => $this->request->getPost('workerName'),
         ];
 
         //Saving the receipt/booking to the database to display sa worker dashboard
         $bookingModel = new BookingModel();
         $bookingModel->save([
 
-            'customer_name' => session()->get('name'),
-            'customer_email' => session()->get('email'),
-            'worker_name' => $data['workerName'],
+            'customer_id' => session()->get('id'),
+            'worker_id' => $data['worker_id'],
             'date_selected' => $data['selectedDate'],
             'time_selected' => $data['selectedTime'],
             'time_of_booking' => date('Y-m-d H:i:s'),
 
 
 
-        ]);
+        ]
+    );
+
+        
 
 
         return view('customers/receipts', $data);

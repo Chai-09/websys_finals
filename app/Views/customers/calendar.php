@@ -66,6 +66,7 @@
                 <form id="appointmentForm" action="<?= base_url('receipts') ?>" method="POST">
                     <input type="hidden" name="selectedDate" id="selectedDate">
                     <input type="hidden" name="selectedTime" id="selectedTime">
+                    <input type="hidden" name="workerId" value="<?= esc($workerId ?? '') ?>">
                     <input type="hidden" name="workerName" value="<?= htmlspecialchars($workerName ?? '') ?>"> <!-- Hidden Input for Name of Worker -->
                     <button type="submit" class="btn btn-primary mt-3">Submit</button>
                 </form>
