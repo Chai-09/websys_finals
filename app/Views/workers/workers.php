@@ -17,7 +17,7 @@
                 <h2 class="text-center mb-4"> Worker Dashboard </h2>
 
                 <?php if (session()->get('isLoggedIn')): ?>
-                    <h4>Welcome, <?= esc(session()->get('name')) ?>!</h4> <br>
+                    <h4> Welcome, <?= esc(session()->get('name')) ?>! </h4> <br>
                     <p> Employee Information: || <strong> Email: </strong> <?= esc(session()->get('email')) ?> || <strong> User Role: </strong> <?= esc(session()->get('user_role')) ?> || </p>
                 <?php else: ?>
                     <div class="alert alert-warning">
@@ -37,52 +37,47 @@
 </div>
 <br><br>
 
- <!-- Yung receipts table -->
-
+ <!-- Table of Receipts -->
 <div class="container mt-5">
-            <h2 class="text-center">Your Current Bookings</h2>
+    <h2 class="text-center"> Your Current Bookings </h2>
             
-                <table class="table table-striped table-bordered">
-                    <thead class="table-dark">
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
 
-                        <tr>
+                <tr>
+                    <th> Customer Name </th>
+                    <th> Email </th>
+                    <th> Date Selected </th>
+                    <th> Time Selected </th>
+                    <th> Actions </th>
+                </tr>
 
-                        <th>Customer Name</th>
-                        <th>Email</th>
-                        <th>Date Selected</th>
-                        <th>Time Selected</th>
-                        <th>Actions</th>
+            </thead>
+            <h>
+                <?php if (!empty($bookings)): ?>
+                <?php foreach ($bookings as $booking): ?>
 
-                        </tr>
+                <tr>
+                    <td><?= esc($booking['customer_name']) ?></td>
+                    <td><?= esc($booking['customer_email']) ?></td>
+                    <td><?= esc($booking['date_selected']) ?></td>
+                    <td><?= esc($booking['time_selected']) ?></td>
+                    <td>
+                        <form action="<?= base_url('/workers/delete/' . $booking['id']) ?>" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-danger btn-sm"> Delete </button>
+                        </form>
+                    </td>
+                </tr>
 
-                     </thead>
-                    <h>
-                        <?php if (!empty($bookings)): ?>
-                            <?php foreach ($bookings as $booking): ?>
+                <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="5" class="text-center"> No Bookings Found! </td?>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+</div>
 
-                                <tr>
-
-                                <td><?= esc($booking['customer_name']) ?></td>
-                                <td><?= esc($booking['customer_email']) ?></td>
-                                <td><?= esc($booking['date_selected']) ?></td>
-                                <td><?= esc($booking['time_selected']) ?></td>
-
-                                <td>
-                                    <form action="<?= base_url('/workers/delete/' . $booking['id']) ?>" method="post" class="d-inline">
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                    </form>
-                                </td>
-                                </tr>
-
-                                <?php endforeach; ?>
-                            <?php else: ?>
-                                <tr>
-                                    <td colspan="5" class="text-center"> No Bookings Found!</td?>
-                                </tr>
-                            <?php endif; ?>
-                            </tbody>
-                        </table>
-                    </div>
-
- </body>
-  </html>
+</body>
+</html>
