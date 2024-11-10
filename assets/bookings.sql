@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2024 at 05:25 PM
+-- Generation Time: Nov 10, 2024 at 06:05 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,16 +41,11 @@ CREATE TABLE `bookings` (
 --
 
 INSERT INTO `bookings` (`id`, `date_selected`, `time_selected`, `time_of_booking`, `worker_id`, `customer_id`) VALUES
-(19, '2024-11-21', '01:00 PM', '2024-11-09 19:51:14', 7, 8),
-(20, '2024-11-19', '11:00 AM', '2024-11-09 20:15:59', 7, 12),
 (21, '2024-11-13', '09:00 AM', '2024-11-09 20:16:08', 9, 12),
 (22, '2024-11-29', '09:00 AM', '2024-11-09 20:16:19', 13, 12),
 (23, '2024-11-19', '01:00 PM', '2024-11-09 20:16:32', 9, 8),
 (24, '2024-11-23', '09:00 AM', '2024-11-09 20:16:45', 13, 8),
-(25, '2024-11-20', '12:00 PM', '2024-11-09 20:17:16', 7, 14),
-(26, '2024-11-10', '01:00 PM', '2024-11-09 20:17:22', 9, 14),
-(27, '2024-11-23', '10:00 AM', '2024-11-09 20:17:29', 13, 14),
-(30, '2024-11-21', '09:00 AM', '2024-11-10 00:19:29', 18, 19);
+(32, '2024-12-11', '01:00 PM', '2024-11-10 00:37:58', 21, 20);
 
 --
 -- Indexes for dumped tables
@@ -72,7 +67,7 @@ ALTER TABLE `bookings`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Constraints for dumped tables

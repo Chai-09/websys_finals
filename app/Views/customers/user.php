@@ -23,9 +23,13 @@
 
                 <!-- For Error Handling -->
                 <?php if (session()->get('isLoggedIn')): ?>
-                    <h4>Welcome, <?= esc(session()->get('name')) ?>!</h4>
-                    <p> User Information: || <strong>Email:</strong> <?= esc(session()->get('email')) ?> || <strong>User Role:</strong> <?= esc(session()->get('user_role')) ?> || </p>
-                
+
+                <h4>Welcome, <?= esc(session()->get('name')) ?>!</h4>
+                <div>
+                    <img src="assets/customer_image/<?= esc(session()->get('image')) ?>" style="width: 100px; height: 100px;">
+                </div> 
+                <p> User Information: || <strong>Email:</strong> <?= esc(session()->get('email')) ?> </p>
+                <a href="<?= base_url('/customers/update/')?>" class="btn btn-warning btn-sm">Update</a>
 
                   <!-- Shows the List of Workers -->
                   <div class="worker-list mb-3">
@@ -60,7 +64,7 @@
     <div class="alert alert-warning">You are not logged in. Please log in first.</div>
 <?php endif; ?>
 
-<br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
 
 <!-- Bookings ng customer -->
 <div class="container mt-5">
@@ -101,6 +105,7 @@
                             </tbody>
                         </table>
                     </div>
+                    <br>  <br>  <br>
 
 <script>
     const workers = document.querySelectorAll('.worker');

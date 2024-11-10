@@ -10,7 +10,7 @@ class CustomerController extends BaseController
 {
     
 
-    public function userDashboard() // If user_role = User, it will show the following - eiryk
+    public function userDashboard() // If user_role = User, it will show the following 
     {
         if (!session()->get('isLoggedIn')) {
             return redirect()->to('/'); // Redirects the User if they're not Logged In
@@ -27,7 +27,7 @@ class CustomerController extends BaseController
         return view('customers/user', $data); // Passes the Workers' Data to the View
     }
 
-    public function calendar() // Shows the Calendar and Time - eiryk
+    public function calendar() // Shows the Calendar and Time 
     {
         if (!session()->get('isLoggedIn')) {
             return redirect()->to('/'); // Ensure user is logged in
@@ -53,7 +53,6 @@ class CustomerController extends BaseController
     public function receipts() // Shows the Receipt from the User and Calendar Files - eiryk
     {
         $data = $this->request->getPost();
-        
 
         $data = [
             'selectedDate' => $this->request->getPost('selectedDate'),
@@ -72,16 +71,73 @@ class CustomerController extends BaseController
             'time_selected' => $data['selectedTime'],
             'time_of_booking' => date('Y-m-d H:i:s'),
 
-
-
         ]
     );
-
-        
-
-
         return view('customers/receipts', $data);
     }
 
+    public function update() 
+    {
+
+        if (!session()->get('isLoggedIn')) {
+            return redirect()->to('/'); // Ensure user is logged in
+        }
+        return view ('customers/update');
+    }
+
+    public function updateProfile() // Updates user information
+    {
+        if (!session()->get('isLoggedIn')) {
+            return redirect()->to('/'); 
+        }
+    
+        $userModel = new UserModel();
+        $userId = session()->get('id');
+        
+        // Get form data
+        $name = $this->request->getPost('name');
+        $email = $this->request->getPost('email');
+        $password = $this->request->getPost('password');
+        
+        $data = [
+            'name' => $name,
+            'email' => $email,
+        ];
+    
+        // Update password if provided
+        if (!empty($password)) {
+            $data['password'] = password_hash($password, PASSWORD_DEFAULT);
+        }
+    
+        // Handle file upload for image
+        $imageFile = $this->request->getFile('image');
+        if ($imageFile && $imageFile->isValid()) {
+            $newImageName = $imageFile->getRandomName();
+            $imageFile->move('assets/customer_image/', $newImageName);
+            $data['image'] = $newImageName;
+    
+            // Delete old image if it's not the default image
+            $oldImage = session()->get('image');
+            if ($oldImage && $oldImage !== 'default.jpg') {
+                $oldImagePath = 'assets/customer_image/' . $oldImage;
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath); // Delete the old image file
+                }
+            }
+    
+            // Update session image if changed
+            session()->set('image', $newImageName);
+        }
+    
+        // Update user data in database
+        $userModel->update($userId, $data);
+    
+        // Update session data
+        session()->set('name', $name);
+        session()->set('email', $email);
+    
+        return redirect()->to('/user')->with('success', 'Profile updated successfully!');
+    }
+    
 
 }

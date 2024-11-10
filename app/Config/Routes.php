@@ -31,3 +31,12 @@ $routes->match(['post'],'/calendar', 'CustomerController::calendar');
 
 // Route for Receipts - eiryk
 $routes->match(['post'], '/receipts', 'CustomerController::receipts');
+
+//Routes for Worker Dashboard
+$routes->match(['get', 'post'], '/workers/delete/(:num)', 'WorkerController::delete/$1');
+
+
+//Routes for Customer
+$routes->match(['get', 'post'], '/customers/update/', 'CustomerController::update');
+$routes->post('/customer/updateProfile', 'CustomerController::updateProfile');
+

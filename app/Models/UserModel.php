@@ -12,6 +12,7 @@ class UserModel extends Model
         'email',
         'password',
         'user_role',
+        'image',
         'status'
     ];
 }

@@ -18,11 +18,21 @@ class WorkerController extends BaseController
         $bookingModel = new BookingModel();
         $bookings = $bookingModel->getWorkerBookings(session()->get('id'));
 
-
-
-
         return view('workers/workers',['bookings' => $bookings]);
     }
+
+
+    public function delete($id) // Deletes booking of user from workers dashboard
+    {
+        $bookingModel = new BookingModel();
+        $bookingModel->delete($id);
+        return redirect()->to('/workers'); 
+    }
+
+
+
+
+
 }
 
 

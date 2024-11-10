@@ -51,6 +51,7 @@
                         <th>Email</th>
                         <th>Date Selected</th>
                         <th>Time Selected</th>
+                        <th>Actions</th>
 
                         </tr>
 
@@ -66,6 +67,11 @@
                                 <td><?= esc($booking['date_selected']) ?></td>
                                 <td><?= esc($booking['time_selected']) ?></td>
 
+                                <td>
+                                    <form action="<?= base_url('/workers/delete/' . $booking['id']) ?>" method="post" class="d-inline">
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </td>
                                 </tr>
 
                                 <?php endforeach; ?>

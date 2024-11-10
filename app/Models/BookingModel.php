@@ -16,9 +16,6 @@ class BookingModel extends Model{
      'time_selected',
      'time_of_booking',
 
-
-
-
      ];
 
     //para ma join yung dalawang tables since yung primary key id ni customer pati ni worker is nasa user table
